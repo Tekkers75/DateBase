@@ -20,6 +20,7 @@ namespace DateBase
         private void button_AddBook_Click(object sender, EventArgs e)
         {
             MainForm mForm = this.Owner as MainForm;
+            DBBook dB = new DBBook();
 
             /// Добавить пустой параметр? 
             /// Добавить цвет поля
@@ -43,8 +44,8 @@ namespace DateBase
 
                 mForm.book.AddBook(author, title, genre, year, count, price);
                 int n = mForm.book.books.Count;   //int n = mForm.book.Book.Count;
-                mForm.dataGridView1.Rows.Add(author, title, genre, year, count, price);
-               
+                //mForm.dataGridView1.Rows.Add(author, title, genre, year, count, price);
+                               
                 
                 /// Как работать с DataSource, заранее делать список?
                 /// Иначе он не дает заполнить 

@@ -16,7 +16,7 @@ namespace DateBase
 
         // todo: observable list
 
-        List<Book> book = new List<Book>();
+        //List<Book> book = new List<Book>();
         //{
         //    new Book("1","1","1",2,2,3)
         //};
@@ -39,7 +39,6 @@ namespace DateBase
         public void AddBook(string author, string title, string genre, int year, int count, int price)
         {
             Book newBook = new Book(author, title, genre, year, count, price);
-            //book.Add(newBook);
             books.Add(newBook);
         }
      

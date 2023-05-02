@@ -25,7 +25,7 @@ namespace DateBase
             // rename: 
             // dataSource
             dataGridView1.Rows[0].ReadOnly = true;
-            //dataGridView1.DataSource = book; //.books; // ???????????? Как реализовать, не дает записывать иначе через Add
+            dataGridView1.DataSource = book.books; // ???????????? Как реализовать, не дает записывать иначе через Add
         }
 
         private void button_add_Click(object sender, EventArgs e)

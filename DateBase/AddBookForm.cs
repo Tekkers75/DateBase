@@ -24,8 +24,9 @@ namespace DateBase
             /// Добавить пустой параметр? 
             /// Добавить цвет поля
             /// Добавить разные исключения, неправильный формат, пустое поле.
-            try
+           // try
             {
+                
                 string author = textBox_Author.Text;
                 string title = textBox_Title.Text;
                 string genre = textBox_Genre.Text;
@@ -41,14 +42,22 @@ namespace DateBase
                 textBox_Price.Text = "";
 
                 mForm.book.AddBook(author, title, genre, year, count, price);
-                int n = mForm.book.Book.Count;
+                int n = mForm.book.books.Count;   //int n = mForm.book.Book.Count;
                 mForm.dataGridView1.Rows.Add(author, title, genre, year, count, price);
-                //mForm.BanChangeColumn(n - 1);
+               
+                
+                /// Как работать с DataSource, заранее делать список?
+                /// Иначе он не дает заполнить 
+                //mForm.book.books.Add(new Book(author, title, genre, year, count, price));
+                //mForm.book.books.Add (author, title, genre, year, count, price)
+                //mForm.dataGridView1.DataSource = mForm.book.books;
+
+
             }
-            catch
-            {
-                MessageBox.Show("Пустое поле");
-            }
+            //catch
+            //{
+            //   // MessageBox.Show("Пустое поле");
+            //}
         }
 
         private void button_Close_Click(object sender, EventArgs e)

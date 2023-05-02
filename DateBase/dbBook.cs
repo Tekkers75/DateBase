@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Data.SqlTypes;
 using System.IO;
 using System.Linq;
@@ -8,30 +10,47 @@ using System.Threading.Tasks;
 
 namespace DateBase
 {
-    public class dbBook
+    public class DBBook
     {
+        // filename?
+
+        // todo: observable list
+
         List<Book> book = new List<Book>();
+        //{
+        //    new Book("1","1","1",2,2,3)
+        //};
+
+        public ObservableCollection<Book> books;
+        
 
         /// Вернуть список
-        public List<Book> Book
+        //public List<Book> Book
+        //{
+        //    get { return book; }
+        //}
+
+        public DBBook()
         {
-            get { return book; }
+            books = new ObservableCollection<Book>();
         }
 
         /// Добавление книги в список
         public void AddBook(string author, string title, string genre, int year, int count, int price)
         {
             Book newBook = new Book(author, title, genre, year, count, price);
-            book.Add(newBook);
+            //book.Add(newBook);
+            books.Add(newBook);
         }
      
+
         /// Сохранить БД в файл
         public void SaveDB(string name)
         {
             ///Почитать
             using (StreamWriter sw = new StreamWriter(name, false, System.Text.Encoding.Unicode))
             {
-                foreach (Book s in book)
+                foreach (Book s in books)
                 {
                     sw.WriteLine(s.ToString());
                 }
@@ -43,10 +62,10 @@ namespace DateBase
         {
             if (!System.IO.File.Exists(name))
                 throw new Exception("Файл не существует");
-
-            if (book.Count != 0)
-                //DeleteBooks();
-
+            
+            if (books.Count != 0)
+                DeleteDB();
+                     
             using (StreamReader sw = new StreamReader(name))
             {
                 while (!sw.EndOfStream)
@@ -68,17 +87,12 @@ namespace DateBase
 
         public void DeleteDB()
         {
-            book.Clear();
+            books.Clear();
         }
 
         public void DeleteBook(int ind)
         {
-            book.RemoveAt(ind);
+            books.RemoveAt(ind);
         }
-
-
-
-
-
     }
 }

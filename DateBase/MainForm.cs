@@ -1,4 +1,5 @@
-﻿using System;
+﻿// todo:
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,14 +15,17 @@ namespace DateBase
 {
     public partial class MainForm : Form
     {
-        public dbBook book = new dbBook();
+        public DBBook book = new DBBook();
         public string filename = "";
 
 
         public MainForm()
         {
             InitializeComponent();
+            // rename: 
+            // dataSource
             dataGridView1.Rows[0].ReadOnly = true;
+            //dataGridView1.DataSource = book; //.books; // ???????????? Как реализовать, не дает записывать иначе через Add
         }
 
         private void button_add_Click(object sender, EventArgs e)
@@ -33,9 +37,9 @@ namespace DateBase
 
         private void WriteToDataGrid()
         {
-            for (int i = 0; i < book.Book.Count; i++)
+            for (int i = 0; i < book.books.Count/*Book.Count*/; i++)
             {
-                Book b = (Book)book.Book[i];
+                Book b = (Book)book.books[i]/*Book[i]*/;
                 dataGridView1.Rows.Add(b.Author, b.Title, b.Genre, b.Year, b.Count, b.Price);
             }
         }
